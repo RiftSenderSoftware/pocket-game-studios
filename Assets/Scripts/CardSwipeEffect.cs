@@ -1,28 +1,162 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CardSwipeEffect : MonoBehaviour, IDrugHandler
 {
-   // public GameObject image;
+    // public GameObject image;
     //private Vector3 startPos;
     //private float swipeThreshold = 50f;
 
-    /*
+    
     public GameObject image;           // Ссылка на объект изображения
     private Vector2 startPos;          // Начальная позиция свайпа
     private Vector2 endPos;            // Конечная позиция свайпа
     private float swipeThreshold = 50f; // Порог свайпа для определения действия
     private bool isSwiping = false;     // Флаг для отслеживания свайпа
-    */
+    
+
+    public GameObject cardGameObject;
+    public CardController cardController;
+    public SpriteRenderer cardSpriteRender;
+    public ResourceManager resourceManager;
+
+    public float fMoovingSpeed;
+    public float fSideMargin;
+    public float fSideTrigger;
+    public float divideValue;
+
+    float alphaText;
+    Vector3 pos;
+    public TMP_Text display;
+    public TMP_Text characterDialogue;
+    public TMP_Text acrionQuote;
+
+    public Color textColor;
+
+    private string leftQuote;
+    private string rightQuote;
+
+    public Card currentCard;
+    public Card testCard;
+
     private void Start()
     {
+        LoadCard(testCard);
         //startPos = image.transform.position;
+    }
+    void UpdateDialogue()
+    {
+        acrionQuote.color = textColor;
+
+        if (cardGameObject.transform.position.x < 0)
+        {
+            acrionQuote.text = leftQuote;
+        }
+        else
+        {
+            acrionQuote.text = rightQuote;
+        }
     }
     private void Update()
     {
+        textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);
+
+        if (cardGameObject.transform.position.x > fSideTrigger)
+        {
+            
+            if (Input.GetMouseButtonUp(0))
+            {
+                currentCard.Right();
+
+            }
+        }
+        else if (cardGameObject.transform.position.x > fSideMargin)
+        {
+            
+        }
+        else if (cardGameObject.transform.position.x > -fSideMargin)
+        {
+            textColor.a = 0;
+            
+        }
+        else if (cardGameObject.transform.position.x > -fSideTrigger)
+        {
+            
+        }
+        else 
+        {
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                currentCard.Left();
+                NewCard();
+            }
+        }
+        UpdateDialogue();
+
+        //Movement
+        if (Input.GetMouseButton(0) && cardController.isMouseOver)
+        {
+            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cardGameObject.transform.position = pos;
+        }
+        else
+        {
+            cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, new Vector2(0,1), fMoovingSpeed);
+        }
+        /* //OLD CODE
+        if(cardGameObject.transform.position.x > fSideMargin)
+        {
+            dialogue.text = rightQuote;
+            //dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
+            
+            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+            {
+                currentCard.Right();
+                Debug.Log("right");
+            }
+
+        } else if (cardGameObject.transform.position.x < -fSideMargin)
+        {
+            dialogue.text = leftQuote;
+
+            //dialogue.alpha = Mathf.Min(-cardGameObject.transform.position.x, 1);
+
+            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
+            {
+                currentCard.Right();
+
+                Debug.Log("left");
+            }
+        }
+        else
+        {
+            //card.color = Color.white;
+        }
+        */
+        //UI
+        display.text = "" + textColor.a;
+
         
+    }
+
+   public void LoadCard(Card card)
+    {
+        cardSpriteRender.sprite = resourceManager.sprites[(int)card.sprite];
+        leftQuote = card.leftQuote;
+        rightQuote = card.rightQuote;
+        currentCard = card;
+        characterDialogue.text = card.dialogue;
+    }
+
+    public void NewCard()
+    {
+        int rollDice = Random.Range(0, resourceManager.cards.Length);
+        LoadCard(resourceManager.cards[rollDice]);
     }
 
     /*
