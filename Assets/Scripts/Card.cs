@@ -14,7 +14,7 @@ public class Card : ScriptableObject
     public string rightQuote;
     public void Left()
     {
-        UnityEngine.Debug.Log(cardName + "swipe right");
+        UnityEngine.Debug.Log(cardName + "swipe left");
     }
     public void Right()
     {

@@ -12,34 +12,42 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     //private float swipeThreshold = 50f;
 
     
-    public GameObject image;           // Ссылка на объект изображения
-    private Vector2 startPos;          // Начальная позиция свайпа
-    private Vector2 endPos;            // Конечная позиция свайпа
-    private float swipeThreshold = 50f; // Порог свайпа для определения действия
-    private bool isSwiping = false;     // Флаг для отслеживания свайпа
+    //public GameObject image;           // Ссылка на объект изображения
+    //private Vector2 startPos;          // Начальная позиция свайпа
+    //private Vector2 endPos;            // Конечная позиция свайпа
+    //private float swipeThreshold = 50f; // Порог свайпа для определения действия
+    //private bool isSwiping = false;     // Флаг для отслеживания свайпа
     
-
+    // Game Objects
     public GameObject cardGameObject;
     public CardController cardController;
     public SpriteRenderer cardSpriteRender;
     public ResourceManager resourceManager;
-
+    public Vector2 defaultPositonCard;
+    public Vector3 cardRotation;
+    // Twaking variables
     public float fMoovingSpeed;
     public float fSideMargin;
     public float fSideTrigger;
     public float divideValue;
+    public float backgroundDivideValue;
 
     float alphaText;
     Vector3 pos;
+    // UI
     public TMP_Text display;
     public TMP_Text characterDialogue;
-    public TMP_Text acrionQuote;
+    public TMP_Text actionQuote;
+    public SpriteRenderer actionBackground;
 
     public Color textColor;
+    public Color actionBackgroundColor;
+    public float fTransparency = 0.7f;
+    public float fRotationCoefficient;
 
+    //Card Variable
     private string leftQuote;
     private string rightQuote;
-
     public Card currentCard;
     public Card testCard;
 
@@ -50,20 +58,21 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     }
     void UpdateDialogue()
     {
-        acrionQuote.color = textColor;
-
+        actionQuote.color = textColor;
+        actionBackground.color = actionBackgroundColor;
         if (cardGameObject.transform.position.x < 0)
         {
-            acrionQuote.text = leftQuote;
+            actionQuote.text = leftQuote;
         }
         else
         {
-            acrionQuote.text = rightQuote;
+            actionQuote.text = rightQuote;
         }
     }
     private void Update()
     {
         textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);
+        actionBackgroundColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / backgroundDivideValue, fTransparency);
 
         if (cardGameObject.transform.position.x > fSideTrigger)
         {
@@ -106,7 +115,8 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         }
         else
         {
-            cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, new Vector2(0,1), fMoovingSpeed);
+            cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, defaultPositonCard, fMoovingSpeed);
+            cardGameObject.transform.eulerAngles = new Vector3(0, 0, 0);
         }
         /* //OLD CODE
         if(cardGameObject.transform.position.x > fSideMargin)
@@ -141,10 +151,16 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         //UI
         display.text = "" + textColor.a;
 
-        
+        characterDialogue.text = currentCard.dialogue;
+
+        //Rotating the card
+        cardGameObject.transform.eulerAngles = new Vector3(0, 0, cardGameObject.transform.position.x * fRotationCoefficient);
+
+
+
     }
 
-   public void LoadCard(Card card)
+    public void LoadCard(Card card)
     {
         cardSpriteRender.sprite = resourceManager.sprites[(int)card.sprite];
         leftQuote = card.leftQuote;
