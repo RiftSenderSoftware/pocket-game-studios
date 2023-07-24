@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Card : ScriptableObject
 {
+    //Basic card values
     public int cardID;
     public string cardName;
     public CardSprite sprite;
@@ -12,6 +13,12 @@ public class Card : ScriptableObject
 
     public string leftQuote;
     public string rightQuote;
+
+    // Impact values
+    public int sPolice;
+    public int sDefend;
+    public int sOffice;
+    public int sMoney;
     public void Left()
     {
         UnityEngine.Debug.Log(cardName + "swipe left");

@@ -7,26 +7,25 @@ using UnityEngine.EventSystems;
 
 public class CardSwipeEffect : MonoBehaviour, IDrugHandler
 {
-    // public GameObject image;
-    //private Vector3 startPos;
-    //private float swipeThreshold = 50f;
+    // Studios
+    public static int statisticPolice;
+    public static int statisticDefend;
+    public static int statisticOffice;
+    public static int statisticMoney;
 
-    
-    //public GameObject image;           // Ссылка на объект изображения
-    //private Vector2 startPos;          // Начальная позиция свайпа
-    //private Vector2 endPos;            // Конечная позиция свайпа
-    //private float swipeThreshold = 50f; // Порог свайпа для определения действия
-    //private bool isSwiping = false;     // Флаг для отслеживания свайпа
-    
+
+
+
     // Game Objects
     public GameObject cardGameObject;
+
     public CardController cardController;
     public SpriteRenderer cardSpriteRender;
     public ResourceManager resourceManager;
     public Vector2 defaultPositonCard;
-    public Vector3 cardRotation;
     // Twaking variables
     public float fMoovingSpeed;
+    public float fRotatingSpeed;
     public float fSideMargin;
     public float fSideTrigger;
     public float divideValue;
@@ -50,6 +49,12 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     private string rightQuote;
     public Card currentCard;
     public Card testCard;
+    // Substiting the card  
+    public bool isSubstituting = false;
+    public Vector3 cardRotation; // default
+    public Vector3 currentRotation; // current rotation the card
+    public Vector3 initRotation; // initial rotation of the card
+
 
     private void Start()
     {
@@ -112,11 +117,18 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cardGameObject.transform.position = pos;
+            cardGameObject.transform.eulerAngles = new Vector3(0, 0, cardGameObject.transform.position.x * fRotationCoefficient);
+
         }
-        else
+        else if(!isSubstituting)
         {
             cardGameObject.transform.position = Vector2.MoveTowards(cardGameObject.transform.position, defaultPositonCard, fMoovingSpeed);
             cardGameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (isSubstituting)
+        {
+            cardGameObject.transform.eulerAngles = Vector3.MoveTowards(cardGameObject.transform.eulerAngles, cardRotation, fRotatingSpeed);
+
         }
         /* //OLD CODE
         if(cardGameObject.transform.position.x > fSideMargin)
@@ -154,8 +166,10 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         characterDialogue.text = currentCard.dialogue;
 
         //Rotating the card
-        cardGameObject.transform.eulerAngles = new Vector3(0, 0, cardGameObject.transform.position.x * fRotationCoefficient);
-
+        if(cardGameObject.transform.eulerAngles == cardRotation)
+        {
+            isSubstituting = false;
+        }
 
 
     }
@@ -167,6 +181,12 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         rightQuote = card.rightQuote;
         currentCard = card;
         characterDialogue.text = card.dialogue;
+        // Reseting position of the card
+        cardGameObject.transform.position = defaultPositonCard;
+        cardGameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        // Init if the substition
+        isSubstituting = true;
+        cardGameObject.transform.eulerAngles = initRotation;
     }
 
     public void NewCard()
@@ -174,6 +194,7 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         int rollDice = Random.Range(0, resourceManager.cards.Length);
         LoadCard(resourceManager.cards[rollDice]);
     }
+
 
     /*
     private void FunTwo()
