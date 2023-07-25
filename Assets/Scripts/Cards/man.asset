@@ -15,6 +15,15 @@ MonoBehaviour:
   cardID: 0
   cardName: Generic man action
   sprite: 0
-  dialogue: How are YUO&
-  leftQuote: Fine
-  rightQuote: Bad
+  dialogue: "\u041E\u0442\u0432\u0435\u0442\u044C \u0437\u0434\u0435\u0441\u044C
+    \u041D\u0415\u0422!"
+  leftQuote: "\u041E\u043A"
+  rightQuote: "\u041D\u0435\u0442."
+  sPoliceLeft: -50
+  sDefendLeft: -50
+  sOfficeLeft: -50
+  sMoneyLeft: -50
+  sPoliceRight: 100
+  sDefendRight: 100
+  sOfficeRight: 100
+  sMoneyRight: 100

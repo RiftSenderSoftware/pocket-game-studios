@@ -13,6 +13,9 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     public static int statisticOffice;
     public static int statisticMoney;
 
+    public static int maxValue = 100;
+    public int minValue = 0;
+
 
 
 
@@ -45,6 +48,7 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     public float fRotationCoefficient;
 
     //Card Variable
+    public string direction;
     private string leftQuote;
     private string rightQuote;
     public Card currentCard;
@@ -76,33 +80,44 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     }
     private void Update()
     {
+        // Values logic
+        if(minValue <= 0) { minValue = 0; }
+        if(maxValue >= 100) { maxValue = 100; }
+
+        //dialogue text handing
         textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);
         actionBackgroundColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / backgroundDivideValue, fTransparency);
 
         if (cardGameObject.transform.position.x > fSideTrigger)
         {
+            direction = "Right";
             
             if (Input.GetMouseButtonUp(0))
             {
                 currentCard.Right();
-
+                NewCard();
             }
+            
         }
         else if (cardGameObject.transform.position.x > fSideMargin)
         {
-            
+            direction = "Right";
+
         }
         else if (cardGameObject.transform.position.x > -fSideMargin)
         {
+            direction = "None";
             textColor.a = 0;
             
         }
         else if (cardGameObject.transform.position.x > -fSideTrigger)
         {
-            
+            direction = "Left";
+
         }
         else 
         {
+            direction = "Left";
 
             if (Input.GetMouseButtonUp(0))
             {

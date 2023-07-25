@@ -15,17 +15,32 @@ public class Card : ScriptableObject
     public string rightQuote;
 
     // Impact values
-    public int sPolice;
-    public int sDefend;
-    public int sOffice;
-    public int sMoney;
+    // Left
+    public int sPoliceLeft;
+    public int sDefendLeft;
+    public int sOfficeLeft;
+    public int sMoneyLeft;
+
+    // Right
+    public int sPoliceRight;
+    public int sDefendRight;
+    public int sOfficeRight;
+    public int sMoneyRight;
     public void Left()
     {
         UnityEngine.Debug.Log(cardName + "swipe left");
+        //Appending the values
+        CardSwipeEffect.statisticPolice += sPoliceLeft;
+        CardSwipeEffect.statisticDefend += sDefendLeft;
+        CardSwipeEffect.statisticOffice += sOfficeLeft;
+        CardSwipeEffect.statisticMoney += sMoneyLeft;
     }
     public void Right()
     {
         UnityEngine.Debug.Log(cardName + "swipe right");
-
+        CardSwipeEffect.statisticPolice += sPoliceRight;
+        CardSwipeEffect.statisticDefend += sDefendRight;
+        CardSwipeEffect.statisticOffice += sOfficeRight;
+        CardSwipeEffect.statisticMoney += sMoneyRight;
     }
 }

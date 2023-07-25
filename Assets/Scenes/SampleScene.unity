@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222728563}
-  - component: {fileID: 222728564}
   m_Layer: 5
   m_Name: UserUI
   m_TagString: Untagged
@@ -164,18 +163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -2}
   m_SizeDelta: {x: 720, y: 173.465}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &222728564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222728562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e745828c7a26304f8c6293cb8725102, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &235991897
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +174,7 @@ GameObject:
   - component: {fileID: 235991900}
   - component: {fileID: 235991899}
   - component: {fileID: 235991898}
+  - component: {fileID: 235991901}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -227,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53520c39f02787c46a0c3919b561d971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minValue: 0
   cardGameObject: {fileID: 263586686}
   cardController: {fileID: 263586691}
   cardSpriteRender: {fileID: 263586687}
@@ -246,6 +235,7 @@ MonoBehaviour:
   actionBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
   fTransparency: 0.5
   fRotationCoefficient: -1
+  direction: 
   currentCard: {fileID: 0}
   testCard: {fileID: 11400000, guid: 7f329a3cc1100df4d9fc58e882e28abd, type: 2}
   isSubstituting: 0
@@ -267,6 +257,28 @@ Transform:
   m_Father: {fileID: 1963535724}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235991901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235991897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e745828c7a26304f8c6293cb8725102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 235991899}
+  card: {fileID: 263586686}
+  statisticPolice: {fileID: 1902159041}
+  statisticDefend: {fileID: 299692211}
+  statisticOffice: {fileID: 1860512274}
+  statisticMoney: {fileID: 412014763}
+  statisticPoliceImpact: {fileID: 907193801}
+  statisticDefendImpact: {fileID: 2138649705}
+  statisticOfficeImpact: {fileID: 1880813181}
+  statisticMoneyImpact: {fileID: 1958520359}
 --- !u!1 &263586686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,8 +1037,8 @@ MonoBehaviour:
     \u0442\u044B \u0441\u044A\u0435\u043B \u044D\u0442\u0438\u0445 \u0412\u043A\u0443\u0441\u043D\u044B\u0445
     \u0431\u0443\u043B\u043E\u0447\u0435\u043A??"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1115,7 +1127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1568,7 +1580,6 @@ GameObject:
   - component: {fileID: 1536182001}
   - component: {fileID: 1536182000}
   - component: {fileID: 1536181999}
-  - component: {fileID: 1536182002}
   m_Layer: 0
   m_Name: Action Quote
   m_TagString: Untagged
@@ -1600,8 +1611,8 @@ MonoBehaviour:
     \u0442\u044B \u0441\u044A\u0435\u043B \u044D\u0442\u0438\u0445 \u0412\u043A\u0443\u0441\u043D\u044B\u0445
     \u0431\u0443\u043B\u043E\u0447\u0435\u043A??"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1690,7 +1701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1732,19 +1743,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.39199996}
   m_SizeDelta: {x: 1, y: 0.2447}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1536182002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536181998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4ab1e8042ffc74ab19a3aaf8bb5e1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortingLayer: 10
 --- !u!1 &1564239198
 GameObject:
   m_ObjectHideFlags: 0
