@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1010c6ecd3ae7eb43a1c40c7b97cbe3e, type: 3}
-  m_Name: mam
+  m_Name: hornygirl
   m_EditorClassIdentifier: 
   cardID: 0
-  cardName: 'Generic woman action '
+  cardName: 'Generic hornygirl action '
   sprite: 2
   dialogue: "\u041E\u0443, \u0443 \u0442\u0435\u0431\u044F \u0435\u0441\u0442\u044C
     \u043F\u0435\u0442 \u043F\u0440\u043E\u0435\u043A\u0442?"

@@ -80,9 +80,21 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     }
     private void Update()
     {
+        if(statisticPolice >= 100) { statisticPolice = 100; }
+        if(statisticPolice <= 0) { statisticPolice = 0; }
+
+        if (statisticDefend >= 100) { statisticDefend = 100; }
+        if (statisticDefend <= 0) { statisticDefend = 0; }
+
+        if (statisticOffice >= 100) { statisticOffice = 100; }
+        if (statisticOffice <= 0) { statisticOffice = 0; }
+
+        if (statisticMoney >= 100) { statisticMoney = 100; }
+        if (statisticMoney <= 0) { statisticMoney = 0; }
+
         // Values logic
-        if(minValue <= 0) { minValue = 0; }
-        if(maxValue >= 100) { maxValue = 100; }
+        if (minValue <= 0) { minValue = 0; Debug.Log("Min:" + minValue); }
+        if(maxValue >= 100) { maxValue = 100; Debug.Log("Max:" + maxValue); }
 
         //dialogue text handing
         textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);

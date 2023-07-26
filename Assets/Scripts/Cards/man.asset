@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: man
   m_EditorClassIdentifier: 
   cardID: 0
-  cardName: Generic man action
-  sprite: 0
+  cardName: Generic icecream action
+  sprite: 1
   dialogue: "\u041E\u0442\u0432\u0435\u0442\u044C \u0437\u0434\u0435\u0441\u044C
     \u041D\u0415\u0422!"
   leftQuote: "\u041E\u043A"

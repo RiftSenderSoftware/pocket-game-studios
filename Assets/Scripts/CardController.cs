@@ -31,7 +31,11 @@ public class CardController : MonoBehaviour
 
 public enum CardSprite
 {
-    MAN,
-    WOMAN,
-    KNIGHT
+    MONEYMAN,
+    ICECREAMMAN,
+    HORNYGIRL,
+    SMOKIMGMAN,
+    SERIOSLIGIRL,
+    PISTOLMAN,
+    SITMAN
 }
