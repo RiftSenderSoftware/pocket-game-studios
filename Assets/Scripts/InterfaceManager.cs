@@ -1,6 +1,7 @@
 //using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,8 @@ public class InterfaceManager : MonoBehaviour
     public Image statisticDefendImpact;
     public Image statisticOfficeImpact;
     public Image statisticMoneyImpact;
+    // UIDate
+    public TextMeshProUGUI dateTMPro;
     // Update is called once per frame
     void Update()
     {

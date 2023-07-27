@@ -1,3 +1,4 @@
-﻿internal interface IDrugHandler
+interface IDrugHandler
 {
+
 }

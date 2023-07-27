@@ -16,7 +16,8 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     public static int maxValue = 100;
     public int minValue = 0;
 
-
+    // Date
+    public int date;
 
 
     // Game Objects
@@ -96,7 +97,7 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         if (minValue <= 0) { minValue = 0; Debug.Log("Min:" + minValue); }
         if(maxValue >= 100) { maxValue = 100; Debug.Log("Max:" + maxValue); }
 
-        //dialogue text handing
+        // dialogue text handing
         textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);
         actionBackgroundColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / backgroundDivideValue, fTransparency);
 
@@ -139,7 +140,7 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
         }
         UpdateDialogue();
 
-        //Movement
+        // Движение
         if (Input.GetMouseButton(0) && cardController.isMouseOver)
         {
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
