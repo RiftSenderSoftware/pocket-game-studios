@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    public CardSwipeEffect gameManager;
+    public CardManager gameManager;
     public GameObject card;
 
     public Image statisticPolice;
@@ -25,10 +25,10 @@ public class InterfaceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        statisticPolice.fillAmount = (float) CardSwipeEffect.statisticPolice / CardSwipeEffect.maxValue;
-        statisticDefend.fillAmount = (float)CardSwipeEffect.statisticDefend / CardSwipeEffect.maxValue;
-        statisticOffice.fillAmount = (float)CardSwipeEffect.statisticOffice / CardSwipeEffect.maxValue;
-        statisticMoney.fillAmount = (float)CardSwipeEffect.statisticMoney / CardSwipeEffect.maxValue;
+        statisticPolice.fillAmount = (float) CardManager.statisticPolice / CardManager.maxValue;
+        statisticDefend.fillAmount = (float)CardManager.statisticDefend / CardManager.maxValue;
+        statisticOffice.fillAmount = (float)CardManager.statisticOffice / CardManager.maxValue;
+        statisticMoney.fillAmount = (float)CardManager.statisticMoney / CardManager.maxValue;
 
         // Right
         if(gameManager.direction == "Right")

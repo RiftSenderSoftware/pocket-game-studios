@@ -30,17 +30,17 @@ public class Card : ScriptableObject
     {
         UnityEngine.Debug.Log(cardName + "swipe left");
         //Appending the values
-        CardSwipeEffect.statisticPolice += sPoliceLeft;
-        CardSwipeEffect.statisticDefend += sDefendLeft;
-        CardSwipeEffect.statisticOffice += sOfficeLeft;
-        CardSwipeEffect.statisticMoney += sMoneyLeft;
+        CardManager.statisticPolice += sPoliceLeft;
+        CardManager.statisticDefend += sDefendLeft;
+        CardManager.statisticOffice += sOfficeLeft;
+        CardManager.statisticMoney += sMoneyLeft;
     }
     public void Right()
     {
         UnityEngine.Debug.Log(cardName + "swipe right");
-        CardSwipeEffect.statisticPolice += sPoliceRight;
-        CardSwipeEffect.statisticDefend += sDefendRight;
-        CardSwipeEffect.statisticOffice += sOfficeRight;
-        CardSwipeEffect.statisticMoney += sMoneyRight;
+        CardManager.statisticPolice += sPoliceRight;
+        CardManager.statisticDefend += sDefendRight;
+        CardManager.statisticOffice += sOfficeRight;
+        CardManager.statisticMoney += sMoneyRight;
     }
 }

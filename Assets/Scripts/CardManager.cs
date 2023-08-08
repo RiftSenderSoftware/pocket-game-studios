@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardSwipeEffect : MonoBehaviour, IDrugHandler
+public class CardManager : MonoBehaviour, IDrugHandler
 {
     // Studios
     public static int statisticPolice;
@@ -19,7 +19,9 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     // Date
     public int date;
 
-
+    // Card Load
+    public int changeCards;
+    public int allCards;
     // Game Objects
     public GameObject cardGameObject;
 
@@ -81,21 +83,9 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
     }
     private void Update()
     {
-        if(statisticPolice >= 100) { statisticPolice = 100; }
-        if(statisticPolice <= 0) { statisticPolice = 0; }
+        MaxValue();
 
-        if (statisticDefend >= 100) { statisticDefend = 100; }
-        if (statisticDefend <= 0) { statisticDefend = 0; }
-
-        if (statisticOffice >= 100) { statisticOffice = 100; }
-        if (statisticOffice <= 0) { statisticOffice = 0; }
-
-        if (statisticMoney >= 100) { statisticMoney = 100; }
-        if (statisticMoney <= 0) { statisticMoney = 0; }
-
-        // Values logic
-        if (minValue <= 0) { minValue = 0; Debug.Log("Min:" + minValue); }
-        if(maxValue >= 100) { maxValue = 100; Debug.Log("Max:" + maxValue); }
+        
 
         // dialogue text handing
         textColor.a = Mathf.Min(Mathf.Abs(cardGameObject.transform.position.x) - fSideMargin / divideValue, 1);
@@ -158,36 +148,7 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
             cardGameObject.transform.eulerAngles = Vector3.MoveTowards(cardGameObject.transform.eulerAngles, cardRotation, fRotatingSpeed);
 
         }
-        /* //OLD CODE
-        if(cardGameObject.transform.position.x > fSideMargin)
-        {
-            dialogue.text = rightQuote;
-            //dialogue.alpha = Mathf.Min(cardGameObject.transform.position.x, 1);
-            
-            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-            {
-                currentCard.Right();
-                Debug.Log("right");
-            }
 
-        } else if (cardGameObject.transform.position.x < -fSideMargin)
-        {
-            dialogue.text = leftQuote;
-
-            //dialogue.alpha = Mathf.Min(-cardGameObject.transform.position.x, 1);
-
-            if (!Input.GetMouseButton(0) && cardGameObject.transform.position.x > fSideTrigger)
-            {
-                currentCard.Right();
-
-                Debug.Log("left");
-            }
-        }
-        else
-        {
-            //card.color = Color.white;
-        }
-        */
         //UI
         display.text = "" + textColor.a;
 
@@ -219,73 +180,41 @@ public class CardSwipeEffect : MonoBehaviour, IDrugHandler
 
     public void NewCard()
     {
-        int rollDice = Random.Range(0, resourceManager.cards.Length);
+        /* randomize system
+        date += 1;
+        InterfaceManager cse = FindObjectOfType<InterfaceManager>();
+        cse.dateTMPro.text = "" + date;
         LoadCard(resourceManager.cards[rollDice]);
+
+        int rollDice = Random.Range(0, resourceManager.cards.Length);
+        */
+        allCards = resourceManager.cards.Length;
+
+        if (changeCards < allCards)
+        {
+            changeCards++;
+            LoadCard(resourceManager.cards[changeCards]);
+        }
     }
-
-
-    /*
-    private void FunTwo()
+    // Values logic
+    public void MaxValue()
     {
-        if (Input.GetMouseButtonDown(0))      // Проверяем нажатие левой кнопки мыши/тачскрина
-        {
-            startPos = Input.mousePosition;  // Сохраняем начальную позицию свайпа
-            isSwiping = true;                // Устанавливаем флаг свайпа
-        }
-        else if (Input.GetMouseButtonUp(0))   // Проверяем отпускание левой кнопки мыши/тачскрина
-        {
-            endPos = Input.mousePosition;    // Сохраняем конечную позицию свайпа
+        if (statisticPolice >= 100) { statisticPolice = 100; }
+        if (statisticPolice <= 0) { statisticPolice = 0; }
 
-            Vector2 swipeDirection = endPos - startPos;     // Вычисляем вектор направления свайпа
+        if (statisticDefend >= 100) { statisticDefend = 100; }
+        if (statisticDefend <= 0) { statisticDefend = 0; }
 
-            if (swipeDirection.magnitude > swipeThreshold)  // Если длина вектора больше порога свайпа
-            {
-                if (swipeDirection.x > 0)           // Если свайп вправо
-                {
-                    Debug.Log("Swipe right");
-                    // Действия при свайпе вправо (например, лайк)
-                }
-                else                                // Если свайп влево
-                {
-                    Debug.Log("Swipe left");
-                    // Действия при свайпе влево (например, дизлайк)
-                }
-            }
+        if (statisticOffice >= 100) { statisticOffice = 100; }
+        if (statisticOffice <= 0) { statisticOffice = 0; }
 
-            isSwiping = false;           // Сбрасываем флаг свайпа
-        }
+        if (statisticMoney >= 100) { statisticMoney = 100; }
+        if (statisticMoney <= 0) { statisticMoney = 0; }
 
-        if (isSwiping)
-        {
-            Vector2 delta = (Vector2)Input.mousePosition - startPos;   // Вычисляем разницу между текущей позицией и начальной позицией свайпа
-
-            image.transform.position = startPos + delta;   // Обновляем позицию изображения в соответствии с позицией свайпа
-        }
+        
+        if (minValue <= 0) { minValue = 0; Debug.Log("Min:" + minValue); }
+        if (maxValue >= 100) { maxValue = 100; Debug.Log("Max:" + maxValue); }
     }
-    */
-
-    /*
-private void FuncOne()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 delta = Input.mousePosition - startPos;
-            if (delta.magnitude > swipeThreshold)
-            {
-                if (delta.x > 0)
-                {
-                    Debug.Log("Right");
-
-                }
-                else
-                {
-                    Debug.Log("left");
-                }
-                image.transform.position = startPos;
-            }
-        }
-    }
-    */
     public void OnDrag(PointerEventData eventData)
     {
         transform.localPosition = new Vector2(transform.localPosition.x + eventData.delta.x, transform.localPosition.y);
