@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour, IDrugHandler
 {
@@ -21,7 +22,7 @@ public class CardManager : MonoBehaviour, IDrugHandler
 
     // Card Load
     public int changeCards;
-    public int allCards;
+    public static int allCards;
     // Game Objects
     public GameObject cardGameObject;
 
@@ -194,6 +195,10 @@ public class CardManager : MonoBehaviour, IDrugHandler
         {
             changeCards++;
             LoadCard(resourceManager.cards[changeCards]);
+        }
+        if(changeCards >= allCards)
+        {
+            SceneManager.LoadScene(0);
         }
     }
     // Values logic

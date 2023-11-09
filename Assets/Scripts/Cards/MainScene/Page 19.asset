@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1010c6ecd3ae7eb43a1c40c7b97cbe3e, type: 3}
+  m_Name: Page 19
+  m_EditorClassIdentifier: 
+  cardID: 0
+  cardName: 
+  sprite: 18
+  dialogue: "\u041E\u0442\u0435\u0446: \u0412\u042B\u0417\u042B\u0412\u0410\u0419
+    \u041F\u041E\u041B\u0418\u0426\u0418\u042E!!!"
+  leftQuote: "\u0427..."
+  rightQuote: "\u0427..."
+  sPoliceLeft: 0
+  sDefendLeft: 0
+  sOfficeLeft: 0
+  sMoneyLeft: 0
+  sPoliceRight: 0
+  sDefendRight: 0
+  sOfficeRight: 0
+  sMoneyRight: 0

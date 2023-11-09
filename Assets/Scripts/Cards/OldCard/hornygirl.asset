@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 0
   cardName: 'Generic hornygirl action '
-  sprite: 2
+  sprite: 0
   dialogue: "\u0422\u0435\u0441\u0442\u043E\u0432\u0430\u044F \u043A\u0430\u0440\u0442\u0430
     \u0434\u043B\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0433\u0440\u0430\u043D\u0438\u0446,
     \u0440\u0430\u043C\u043E\u043A, \u0442\u0435\u043A\u0441\u0442\u0430"
