@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17254902, g: 0.17254902, b: 0.32941177, a: 1}
+  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.36078432}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -279,6 +279,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 113728ea1bc6daa469af5546442f8f3a, type: 3}
   - {fileID: 21300000, guid: 16c0b1ecf23271d4da1e5a5a2959bc3d, type: 3}
   - {fileID: 21300000, guid: 418d0cdf65f89c049996a02d60b567a8, type: 3}
+  - {fileID: 21300000, guid: 6a18b854ce7ea2c43aec15ae8f4c06a3, type: 3}
   - {fileID: 21300000, guid: d3d96e65a9cd1ac4b847f31b0720c2d2, type: 3}
   - {fileID: 21300000, guid: a4ea003d31199b6459ef86921d185d81, type: 3}
   - {fileID: 21300000, guid: 88345c3562cc0c14298dcd07621f76c6, type: 3}
@@ -287,7 +288,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ff6ffba2bf399347ac930a711576a08, type: 3}
   - {fileID: 21300000, guid: 320cab3acc617794e9ed0a9d6fee47b1, type: 3}
   - {fileID: 21300000, guid: 433068cdea6d6694a854e1deaf000876, type: 3}
-  - {fileID: 21300000, guid: b97bbcf5392a86842968b12f56b69d55, type: 3}
   - {fileID: 21300000, guid: a2af7bde164550243ba0601a64dc6d4d, type: 3}
   - {fileID: 21300000, guid: e78b0c4453ea32b409a1092153a35ab0, type: 3}
   - {fileID: 21300000, guid: a03bf60eb39f34449a4cc80b2b2de1b2, type: 3}
@@ -683,6 +683,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -773,6 +774,102 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!82 &519420034
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8b480c692cce99a409093a350746ef4e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.599
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &563868737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2221,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2137481713350974423, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481713350974423, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481713350974423, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.745283
+      objectReference: {fileID: 0}
     - target: {fileID: 2137481713793852822, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
       propertyPath: m_Name
       value: Game Scene
@@ -2172,6 +2281,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2137481713994859354, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481713994859354, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.13725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481713994859354, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14901961
+      objectReference: {fileID: 0}
     - target: {fileID: 2137481713994859355, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
       propertyPath: m_LocalScale.x
       value: 63.288666
@@ -2187,6 +2308,18 @@ PrefabInstance:
     - target: {fileID: 2137481713994859355, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481714807923926, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481714807923926, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137481714807923926, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.735849
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 208967f74fb8eeb4cb4887e473b38cd3, type: 3}
